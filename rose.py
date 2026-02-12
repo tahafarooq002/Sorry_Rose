@@ -186,7 +186,7 @@ for(let k=0;k<30;k++){
 </html>
 """
 
-file_name = "sorry.html"
+file_name = "index.html"
 
 with open(file_name,"w",encoding="utf-8") as f:
     f.write(html_content)
