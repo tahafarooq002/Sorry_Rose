@@ -1,4 +1,4 @@
-# Realistic Full Bloom 3D Rose 🌹✨ for Minahil Ramzan
+# Realistic Rose with Stem and Click Message 🌹
 
 html_content = """
 <!DOCTYPE html>
@@ -27,8 +27,22 @@ body {
 .scene {
     perspective: 1200px;
     margin-bottom: 20px;
+    position: relative;
 }
 
+/* Stem */
+.stem {
+    width: 6px;
+    height: 120px;
+    background: #228B22;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+}
+
+/* Rose */
 .rose {
     width: 60vw;
     max-width: 240px;
@@ -36,9 +50,10 @@ body {
     max-height: 240px;
     position: relative;
     transform-style: preserve-3d;
+    z-index:2;
 }
 
-/* Realistic Petals */
+/* Petals */
 .petal {
     position: absolute;
     width: 60%;
@@ -52,7 +67,7 @@ body {
     transition: transform 2s ease;
 }
 
-/* More petals with rotation for realism */
+/* Petal rotations */
 .petal:nth-child(1) { transform: rotateY(0deg) rotateX(80deg); z-index:9; }
 .petal:nth-child(2) { transform: rotateY(30deg) rotateX(80deg); z-index:8; }
 .petal:nth-child(3) { transform: rotateY(60deg) rotateX(80deg); z-index:7; }
@@ -63,7 +78,7 @@ body {
 .petal:nth-child(8) { transform: rotateY(210deg) rotateX(80deg); z-index:2; }
 .petal:nth-child(9) { transform: rotateY(240deg) rotateX(80deg); z-index:1; }
 
-/* Bloom animation (staggered for realism) */
+/* Bloom animation */
 .bloom .petal:nth-child(1){ transform: rotateY(0deg) rotateX(15deg); transition-delay:0s; }
 .bloom .petal:nth-child(2){ transform: rotateY(30deg) rotateX(15deg); transition-delay:0.1s; }
 .bloom .petal:nth-child(3){ transform: rotateY(60deg) rotateX(15deg); transition-delay:0.2s; }
@@ -135,14 +150,15 @@ button {
         <div class="petal"></div>
         <div class="petal"></div>
     </div>
+    <div class="stem"></div>
 </div>
 
 <div class="message" id="message"></div>
-<button onclick="forgive()">کیا آپ مجھے معاف کریں گی؟ 💖</button>
+<button onclick="showUrduMessage()">کیا آپ مجھے معاف کریں گی؟ 💖</button>
 
 <script>
 let text = "Minahil Ramzan 💗\\nI am truly sorry... 🌹\\nYou mean everything to me ❤️\\n\\n";
-let urdu = "Draamoo 💕\\nمجھے واقعی اپنی غلطی کا احساس ہے۔\\nآپ میری زندگی کی سب سے قیمتی چیز ہیں۔\\nبراہ کرم مجھے معاف کر دیں۔ 🌹❤️";
+let urdu = "منہال رمضان 💕\\nمجھے واقعی اپنی غلطی کا احساس ہے۔\\nآپ میری زندگی کی سب سے قیمتی چیز ہیں۔\\nبراہ کرم مجھے معاف کر دیں۔ 🌹❤️";
 let i=0;
 
 // Auto bloom on page load
@@ -161,7 +177,17 @@ function typeWriter(){
     }
 }
 
-function forgive(){ alert("آپ کا بہت شکریہ ❤️🌹"); }
+// Button shows Urdu alert message on page
+function showUrduMessage(){
+    let msgDiv = document.createElement("div");
+    msgDiv.className="urdu";
+    msgDiv.style.background="rgba(0,0,0,0.5)";
+    msgDiv.style.padding="10px 20px";
+    msgDiv.style.marginTop="15px";
+    msgDiv.style.borderRadius="15px";
+    msgDiv.innerHTML = "🌹❤️ آپ کا بہت شکریہ";
+    document.body.appendChild(msgDiv);
+}
 
 /* Falling petals */
 for(let j=0;j<15;j++){
@@ -186,10 +212,10 @@ for(let k=0;k<30;k++){
 </html>
 """
 
-file_name = "index.html"
+file_name = "Rose_With_Stem_And_Urdu.html"
 
 with open(file_name,"w",encoding="utf-8") as f:
     f.write(html_content)
 
-print("Ultra-realistic full bloom rose HTML created successfully 🌹✨")
+print("Realistic rose with stem and Urdu message HTML created successfully 🌹✨")
 print("Upload this file to Netlify or GitHub Pages and send her the link 💖")
